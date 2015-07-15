@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/dark_purple"
+    android:orientation="vertical"
+    tools:context=".MyLocationActivity">
+
+    <LinearLayout
+        android:id="@+id/EnterLocationLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin">
+
+            <com.example.rachel.wygt.EditTextClear
+                android:id="@+id/enter_my_location_field"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/abc_action_bar_default_height"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_weight="1.03"
+                android:clickable="true"
+                android:hint="enter location address"
+                android:textColor="@android:color/white" />
+
+            <ImageButton
+                android:id="@+id/enter_location"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/abc_action_bar_default_height"
+                android:layout_alignParentLeft="true"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/abc_action_bar_icon_vertical_padding"
+                android:layout_toRightOf="@+id/enter_location_field"
+                android:adjustViewBounds="true"
+                android:background="@android:color/transparent"
+                android:onClick="getAddressAddLoc"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/go"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_marginLeft="@dimen/activity_vertical_margin"
+            android:layout_marginRight="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textColor="@color/white"
+                android:text="name"/>
+
+            <com.example.rachel.wygt.EditTextClear
+                android:id="@+id/save_location_name"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_weight="1.03"
+                android:clickable="true"
+                android:hint="enter location name"
+                android:textColor="@android:color/white" />
+
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+
+    <!--<ProgressBar-->
+        <!--android:id="@+id/address_progress"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:indeterminate="true"-->
+        <!--android:visibility="gone" />-->
+
+    <LinearLayout
+        android:id="@+id/map_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/EnterLocationLayout"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/add_location_map"
+            class="com.google.android.gms.maps.MapFragment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            tools:context=".MyLocationsActivity" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/map_layout"
+            android:layout_weight="1"
+            android:weightSum="100">
+            <ImageButton
+                android:layout_marginTop="@dimen/abc_action_bar_icon_vertical_padding"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginLeft="80dip"
+                android:layout_marginRight="80dip"
+                android:background="@color/lighter_purple"
+                android:onClick="saveLocation"
+                android:gravity="center"
+                android:src="@drawable/save1"
+                android:scaleType="fitCenter"
+                android:paddingTop="7dip"
+                android:paddingBottom="7dip"
+                android:textColor="#ffffffff" />
+
+            </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

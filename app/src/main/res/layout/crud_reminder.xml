@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/dark_purple"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/edit_reminder_display"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="20"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="2dip"
+                android:text="edit reminder task"
+                android:textColor="@color/white"
+                android:textSize="10pt" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                android:layout_weight="10"
+                android:src="@drawable/reminder" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/edit_reminder_task"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="16dp"
+            android:layout_weight="80"
+            android:weightSum="100"
+            android:gravity="center_horizontal"
+            android:showDividers="beginning|middle"
+            android:divider="@drawable/divider_horizontal"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/edit_reminder_destination_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="20"
+                android:weightSum="100"
+                android:gravity="center"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="30"
+                    android:gravity="right|center_vertical"
+                    android:text="destination: "
+                    android:layout_marginRight="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:textColor="@color/white" />
+
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:id="@+id/edit_reminder_destination"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="55"
+                    android:text="Neumont University\nS Main st...\nsdjfhjds"
+                    android:textColor="@color/white" />
+
+                <!--<ImageView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_weight="15"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="@dimen/abc_action_bar_icon_vertical_padding"-->
+                <!--android:layout_marginRight="@dimen/activity_vertical_margin"-->
+                <!--android:src="@drawable/edit"-->
+                <!--android:adjustViewBounds="true"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--/>-->
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/edit_distance_layout_reminder"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="25"
+                android:gravity="center_horizontal"
+                android:weightSum="100"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="25"
+                    android:gravity="center"
+                    android:text="send reminder when I am...."
+                    android:textColor="@color/white" />
+
+                <LinearLayout
+                    android:id="@+id/edit_reminder_there_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="30"
+                    android:onClick="thereCheckedEditReminder"
+                    android:paddingLeft="@dimen/activity_vertical_margin"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:id="@+id/edit_reminder_there_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:onClick="thereCheckedEditReminder" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="there"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/edit_reminder_distance_layout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="45"
+                    android:background="@color/translucent_black"
+                    android:onClick="distanceCheckedEditReminder"
+                    android:paddingLeft="@dimen/activity_vertical_margin">
+
+                    <CheckBox
+                        android:id="@+id/edit_reminder_distance_checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="distanceCheckedEditReminder" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="about..."
+                        android:textColor="@color/white" />
+
+                    <com.example.rachel.wygt.EditTextClear
+                        android:id="@+id/edit_reminder_distance_away"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textColor="@color/white" />
+
+                    <Spinner
+                        android:id="@+id/edit_reminder_spinner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:entries="@array/miles_minutes"
+                        android:prompt="@string/choose_type" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="away"
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/crud_recurrence_reminder"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="@dimen/abc_action_bar_icon_vertical_padding"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="70">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:text="repeat"
+                    android:paddingTop="@dimen/abc_action_bar_icon_vertical_padding" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/crud_monday_reminder"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_marginRight="10dip"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_outline"
+                        android:text="mon"
+                        android:onClick="setAlarmReminderCrud"
+                        android:textSize="12sp"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/crud_tuesday_reminder"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dip"
+                        android:background="@drawable/button_outline"
+                        android:text="tue"
+                        android:onClick="setAlarmReminderCrud"
+                        android:textSize="12sp"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/crud_wednesday_reminder"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_marginRight="10dip"
+                        android:layout_height="wrap_content"
+                        android:onClick="setAlarmReminderCrud"
+                        android:background="@drawable/button_outline"
+                        android:textSize="12sp"
+                        android:text="wed"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/crud_thursday_reminder"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_marginRight="10dip"
+                        android:layout_height="wrap_content"
+                        android:onClick="setAlarmReminderCrud"
+                        android:background="@drawable/button_outline"
+                        android:textSize="12sp"
+                        android:text="thu"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/crud_friday_reminder"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:layout_marginRight="10dip"
+                        android:layout_height="wrap_content"
+                        android:onClick="setAlarmReminderCrud"
+                        android:background="@drawable/button_outline"
+                        android:textSize="12sp"
+                        android:text="fri"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/crud_saturday_reminder"
+                        android:layout_width="0dp"
+                        android:onClick="setAlarmReminderCrud"
+                        android:layout_weight="10"
+                        android:layout_marginRight="10dip"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_outline"
+                        android:textSize="12sp"
+                        android:text="sat"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/crud_sunday_reminder"
+                        android:layout_width="0dp"
+                        android:layout_weight="10"
+                        android:onClick="setAlarmReminderCrud"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_outline"
+                        android:textSize="12sp"
+                        android:text="sun"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_message_reminder_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="40"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:paddingTop="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:textStyle="bold"
+                    android:textSize="8pt"
+                    android:layout_height="wrap_content"
+                    android:text="reminder"
+                    android:textColor="@color/white" />
+
+                <com.example.rachel.wygt.EditTextClear
+                    android:id="@+id/edit_reminder_message"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:paddingTop="@dimen/activity_vertical_margin"
+                    android:paddingBottom="@dimen/activity_horizontal_margin"
+                    android:hint="enter your reminder here"
+                    android:lines="9"
+                    android:minLines="1"
+                    android:gravity="top|left"
+                    android:maxLines="30"
+                    android:scrollbars="vertical"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/light_grey" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_reminder_button_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="15"
+                android:paddingTop="@dimen/abc_action_bar_icon_vertical_padding"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginLeft="40dip"
+                android:layout_marginRight="40dip"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginRight="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:layout_weight="1"
+                    android:background="@color/lighter_purple"
+                    android:onClick="deleteReminder"
+                    android:gravity="center"
+                    android:src="@drawable/trash"
+                    android:scaleType="fitCenter"
+                    android:paddingTop="7dip"
+                    android:paddingBottom="7dip"
+                    android:textColor="#ffffffff" />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="@dimen/abc_action_bar_icon_vertical_padding"
+                    android:layout_weight="1"
+                    android:background="@color/lighter_purple"
+                    android:onClick="updateReminder"
+                    android:gravity="center"
+                    android:src="@drawable/save1"
+                    android:scaleType="fitCenter"
+                    android:paddingTop="7dip"
+                    android:paddingBottom="7dip"
+                    android:textColor="#ffffffff" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
